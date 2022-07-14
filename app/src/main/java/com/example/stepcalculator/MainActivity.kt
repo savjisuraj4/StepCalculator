@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -20,10 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import java.time.LocalTime
 import android.widget.Button
-
-
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
@@ -44,12 +40,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         loadData()
         resetsteps()
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as
                 NotificationManager
-        //saveData()
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
             != PackageManager.PERMISSION_GRANTED) {
@@ -62,12 +56,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
             override fun onFinish() {
                 btnNotify()
-                val hour=LocalTime.now().hour.toString()
-                val min=LocalTime.now().minute.toString()
-                val sec=LocalTime.now().second.toString()
-                if(hour=="00" && min=="00" && sec=="00"){
-                    resetsteps()
-                }
             }
         }
         timer.start()
@@ -77,7 +65,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     fun btnNotify() {
-        val stepsdisplay=totalSteps-previousTotalSteps
         val pendingIntent = PendingIntent.getActivity(this, 0, getIntent(), PendingIntent.FLAG_UPDATE_CURRENT)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -85,7 +72,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             notificationChannel.lightColor = Color.BLUE
             notificationManager.createNotificationChannel(notificationChannel)
             builder = Notification.Builder(this, channelId)
-                .setContentTitle(tvstepsTaken.text.toString())
+                .setContentTitle(tvstepsTaken.text.toString()+ "  Steps")
                 .setContentText("Tap for details")
                 .setSmallIcon(R.drawable .ic_baseline_directions_run_24)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_launcher_background))
@@ -166,7 +153,3 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         backPressedTime = System.currentTimeMillis()
     }
     }
-
-
-
-
