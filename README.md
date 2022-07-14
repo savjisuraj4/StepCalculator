@@ -11,8 +11,8 @@ It contains only one activity.Notification get updated automatically and tells h
 # Screenshot
 
 <p id="img_cont">
-	<img src="/pic1.jpeg" width = "200" height= "350" hspace=40>
-	<img src="/pic2.jpeg" width = "200" height= "350" hspace=40>
-	<img src="/pic3.jpeg" width = "200" height= "350" hspace=40>
-	<img src="/pic4.jpeg" width = "200" height= "350" hspace=40>
+	<img src="/1.jpeg" width = "200" height= "350" hspace=40>
+	<img src="/2.jpeg" width = "200" height= "350" hspace=40>
+	<img src="/3.jpeg" width = "200" height= "350" hspace=40>
+	<img src="/4.jpeg" width = "200" height= "350" hspace=40>
 </p
