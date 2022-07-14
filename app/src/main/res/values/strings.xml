@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Step Calculator</string>
+    <string name="steps">Steps</string>
+    <string name="_0">0</string>
+    <string name="name">Name</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="email">Email</string>
+    <string name="todo">TODO</string>
+    <string name="start">Start</string>
+</resources>
